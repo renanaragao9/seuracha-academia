@@ -8,6 +8,7 @@ use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\TimePicker;
 use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
+use Illuminate\Http\UploadedFile;
 
 class ConfigurationForm
 {
@@ -66,17 +67,25 @@ class ConfigurationForm
                     ->schema([
                         FileUpload::make('logo')
                             ->label('Logo')
-                            ->image()
                             ->disk('public')
                             ->directory('configurations')
-                            ->nullable(),
+                            ->nullable()
+                            ->rules([
+                                fn ($state): array => $state instanceof UploadedFile
+                                    ? ['image', 'mimes:jpeg,png,gif,webp,svg', 'max:2048']
+                                    : ['nullable', 'string'],
+                            ]),
 
                         FileUpload::make('favicon')
                             ->label('Favicon')
-                            ->image()
                             ->disk('public')
                             ->directory('configurations')
-                            ->nullable(),
+                            ->nullable()
+                            ->rules([
+                                fn ($state): array => $state instanceof UploadedFile
+                                    ? ['image', 'mimes:jpeg,png,gif,webp,svg', 'max:512']
+                                    : ['nullable', 'string'],
+                            ]),
                     ]),
 
                 Section::make('Endereço')
