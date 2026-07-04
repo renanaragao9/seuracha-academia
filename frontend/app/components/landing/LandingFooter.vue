@@ -78,7 +78,6 @@ const socialLinks = computed(() => [
                 'Modalidades',
                 'Estrutura',
                 'Planos',
-                'Depoimentos',
                 'Contato',
               ]"
               :key="link"

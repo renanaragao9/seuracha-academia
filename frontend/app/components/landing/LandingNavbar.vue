@@ -11,7 +11,6 @@ const navLinks = [
   { label: "Planos", href: "#planos" },
   { label: "Modalidades", href: "#modalidades" },
   { label: "Estrutura", href: "#estrutura" },
-  { label: "Depoimentos", href: "#depoimentos" },
   { label: "Contato", href: "#contato" },
 ];
 
