@@ -1,0 +1,23 @@
+<?php
+
+namespace App\Filament\Resources\ExpenseTypes\Pages;
+
+use App\Filament\Resources\ExpenseTypes\ExpenseTypeResource;
+use Filament\Actions\DeleteAction;
+use Filament\Actions\ForceDeleteAction;
+use Filament\Actions\RestoreAction;
+use Filament\Resources\Pages\EditRecord;
+
+class EditExpenseType extends EditRecord
+{
+    protected static string $resource = ExpenseTypeResource::class;
+
+    protected function getHeaderActions(): array
+    {
+        return [
+            DeleteAction::make(),
+            ForceDeleteAction::make(),
+            RestoreAction::make(),
+        ];
+    }
+}

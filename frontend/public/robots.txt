@@ -1,0 +1,9 @@
+User-Agent: *
+Disallow: /login
+Disallow: /students/
+Disallow: /api/
+Allow: /
+
+Crawl-delay: 10
+
+Sitemap: https://ironfit.com.br/sitemap.xml

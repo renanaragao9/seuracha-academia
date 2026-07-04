@@ -1,0 +1,286 @@
+/**
+ * Theme Design System
+ * Arquivo centralizado de cores e configurações de design
+ * para páginas de login, configuração e landing page
+ */
+
+:root {
+  /* === CORES PRINCIPAIS === */
+
+    /* Verde principal (#10b981 = emerald-500) */
+    --color-primary-emerald: 16 185 129; /* emerald-500 */
+    --color-primary-emerald-dark: 4 120 87; /* emerald-700 */
+    --color-primary-emerald-light: 52 211 153; /* emerald-400 */
+
+    /* Cores de fundo (#111827 = gray-900) */
+    --color-bg-primary: 17 24 39; /* gray-900 */
+    --color-bg-secondary: 31 41 55; /* gray-800 */
+    --color-bg-tertiary: 55 65 81; /* gray-700 */
+
+    /* Cores de texto */
+    --color-text-primary: 255 255 255; /* white */
+    --color-text-secondary: 161 161 170; /* zinc-400 */
+    --color-text-tertiary: 212 212 216; /* zinc-300 */
+    --color-text-muted: 82 82 91; /* zinc-600 */
+
+    /* Cores de borda */
+    --color-border-primary: 63 63 70; /* zinc-700 */
+    --color-border-light: 255 255 255; /* white com opacidade */
+
+    /* Cores de estado */
+    --color-error: 239 68 68; /* red-500 */
+    --color-error-bg: 239 68 68; /* red-500 para fundo */
+    --color-success: 34 197 94; /* green-500 */
+
+    /* === OPACIDADES === */
+    --opacity-bg-card: 0.5; /* Fundo de cards */
+    --opacity-border-subtle: 0.1; /* Bordas sutis */
+    --opacity-border-light: 0.05; /* Bordas muito sutis */
+    --opacity-overlay: 0.1; /* Overlays de gradiente */
+    --opacity-hover: 0.05; /* Estado hover */
+
+    /* === SOMBRAS === */
+    --shadow-primary:
+      0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+    --shadow-emerald-glow: 0 20px 25px -5px
+      rgb(var(--color-primary-emerald) / 0.3);
+    --shadow-emerald-glow-sm: 0 10px 15px -3px
+      rgb(var(--color-primary-emerald) / 0.3);
+
+    /* === RAIOS DE BORDA === */
+    --radius-sm: 0.5rem; /* 8px - rounded-lg */
+    --radius-md: 0.75rem; /* 12px - rounded-xl */
+    --radius-lg: 1rem; /* 16px - rounded-2xl */
+    --radius-xl: 1.5rem; /* 24px - rounded-3xl */
+
+    /* === ESPAÇAMENTOS === */
+    --spacing-card: 2rem; /* Padding interno de cards */
+    --spacing-section: 5rem; /* Espaçamento entre seções */
+
+    /* === TRANSIÇÕES === */
+    --transition-fast: 150ms;
+    --transition-base: 200ms;
+    --transition-slow: 300ms;
+    --transition-ease: cubic-bezier(0.4, 0, 0.2, 1);
+
+    /* === FONTES === */
+    --font-weight-medium: 500;
+    --font-weight-semibold: 600;
+    --font-weight-bold: 700;
+    --font-weight-black: 900;
+  }
+
+/* === CLASSES UTILITÁRIAS CUSTOMIZADAS === */
+
+/* Gradiente de marca (verde escuro -> verde claro) */
+.bg-brand-gradient {
+  background: linear-gradient(
+    to right,
+    rgb(var(--color-primary-emerald)),
+    rgb(var(--color-primary-emerald-dark))
+  );
+}
+
+.bg-brand-gradient-br {
+  background: linear-gradient(
+    to bottom right,
+    rgb(var(--color-primary-emerald)),
+    rgb(var(--color-primary-emerald-dark))
+  );
+}
+
+.text-brand-gradient {
+  background: linear-gradient(
+    to right,
+    rgb(var(--color-primary-emerald-light)),
+    rgb(var(--color-primary-emerald-dark))
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Fundo padrão das páginas (gray escuro com gradiente) */
+.bg-page-default {
+  background: linear-gradient(
+    to bottom right,
+    rgb(var(--color-bg-primary)),
+    rgb(var(--color-bg-secondary)),
+    rgb(var(--color-bg-primary))
+  );
+}
+
+/* Card padrão com backdrop blur */
+.card-default {
+  border-radius: var(--radius-lg);
+  border: 1px solid
+    rgba(var(--color-border-light), var(--opacity-border-subtle));
+  background-color: rgba(var(--color-bg-tertiary), var(--opacity-bg-card));
+  backdrop-filter: blur(8px);
+  padding: var(--spacing-card);
+}
+
+/* Input padrão */
+.input-default {
+  width: 100%;
+  border-radius: var(--radius-md);
+  border: 1px solid rgb(var(--color-border-primary));
+  background-color: rgb(var(--color-bg-secondary));
+  padding: 0.75rem 1rem;
+  color: rgb(var(--color-text-primary));
+  transition: all var(--transition-base) var(--transition-ease);
+}
+
+.input-default::placeholder {
+  color: rgb(var(--color-text-muted));
+}
+
+.input-default:focus {
+  outline: none;
+  border-color: rgb(var(--color-primary-emerald));
+  box-shadow: 0 0 0 1px rgba(var(--color-primary-emerald), 0.5);
+}
+
+/* Botão primário (gradiente verde) */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: var(--radius-lg);
+  background: linear-gradient(
+    to right,
+    rgb(var(--color-primary-emerald)),
+    rgb(var(--color-primary-emerald-dark))
+  );
+  padding: 0.75rem 1rem;
+  font-size: 0.875rem;
+  font-weight: var(--font-weight-semibold);
+  color: rgb(var(--color-text-primary));
+  transition: all var(--transition-slow) var(--transition-ease);
+  cursor: pointer;
+  border: none;
+}
+
+.btn-primary:hover {
+  box-shadow: var(--shadow-emerald-glow);
+  transform: scale(1.02);
+}
+
+.btn-primary:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: scale(1);
+}
+
+/* Botão secundário (outline) */
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: var(--radius-lg);
+  border: 1px solid
+    rgba(var(--color-border-light), var(--opacity-border-subtle));
+  background-color: transparent;
+  padding: 0.75rem 1rem;
+  font-size: 0.875rem;
+  font-weight: var(--font-weight-semibold);
+  color: rgb(var(--color-text-primary));
+  transition: all var(--transition-slow) var(--transition-ease);
+  cursor: pointer;
+}
+
+.btn-secondary:hover {
+  background-color: rgba(var(--color-border-light), var(--opacity-hover));
+  border-color: rgba(var(--color-border-light), 0.2);
+}
+
+/* Overlay de gradiente radial (verde) */
+.overlay-emerald-radial {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse at top right,
+    rgba(var(--color-primary-emerald), 0.15),
+    transparent 60%
+  );
+  pointer-events: none;
+}
+
+/* Overlay de gradiente radial (verde escuro) */
+.overlay-emerald-dark-radial {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse at bottom left,
+    rgba(var(--color-primary-emerald-dark), var(--opacity-overlay)),
+    transparent 60%
+  );
+  pointer-events: none;
+}
+
+/* Padrão de grade (grid pattern) */
+.grid-pattern {
+  background-image:
+    linear-gradient(rgba(var(--color-border-light), 0.05) 1px, transparent 1px),
+    linear-gradient(
+      90deg,
+      rgba(var(--color-border-light), 0.05) 1px,
+      transparent 1px
+    );
+  background-size: 60px 60px;
+}
+
+/* Badge de status */
+.badge-default {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
+  background-color: rgba(var(--color-primary-emerald), var(--opacity-overlay));
+  border: 1px solid rgba(var(--color-primary-emerald), 0.2);
+  color: rgb(var(--color-primary-emerald-light));
+  font-size: 0.875rem;
+  font-weight: var(--font-weight-medium);
+}
+
+/* Ícone de marca (logo) */
+.icon-brand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-lg);
+  background: linear-gradient(
+    to bottom right,
+    rgb(var(--color-primary-emerald)),
+    rgb(var(--color-primary-emerald-dark))
+  );
+  box-shadow: var(--shadow-emerald-glow-sm);
+}
+
+/* Label padrão */
+.label-default {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: var(--font-weight-medium);
+  color: rgb(var(--color-text-tertiary));
+  margin-bottom: 0.375rem;
+}
+
+/* Mensagem de erro */
+.error-message {
+  display: flex;
+  align-items: start;
+  gap: 0.75rem;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(var(--color-error), 0.3);
+  background-color: rgba(var(--color-error), var(--opacity-overlay));
+  padding: 1rem;
+}
+
+.error-message-text {
+  font-size: 0.875rem;
+  color: rgb(239 68 68 / 0.9); /* red-400 */
+}

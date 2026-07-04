@@ -1,0 +1,318 @@
+@import '../../../../vendor/filament/filament/resources/css/theme.css';
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+@source '../../../../app/Filament/**/*';
+@source '../../../../resources/views/filament/**/*';
+
+:root {
+    --ar-bg-950: rgb(17 24 39);
+    --ar-bg-900: rgb(31 41 55);
+    --ar-bg-800: rgb(55 65 81);
+    --ar-zinc-300: rgb(212 212 216);
+    --ar-zinc-400: rgb(161 161 170);
+    --ar-zinc-600: rgb(82 82 91);
+    --ar-zinc-700: rgb(63 63 70);
+    --ar-emerald-500: rgb(16 185 129);
+    --ar-emerald-600: rgb(5 150 105);
+    --ar-emerald-700: rgb(4 120 87);
+    --ar-white: rgb(255 255 255);
+}
+
+.fi-body,
+.fi-body * {
+    font-family: Inter, sans-serif;
+}
+
+.fi-simple-layout {
+    position: relative;
+    background-image: linear-gradient(135deg, rgb(0 0 0 / 0.55), rgb(0 0 0 / 0.35), rgb(0 0 0 / 0.55)), url('/image/css/login.jpg');
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+}
+
+.fi-simple-layout::after {
+    content: '';
+    position: absolute;
+    width: 550px;
+    height: 550px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgb(4 120 87 / 0.10), transparent 60%);
+    filter: blur(80px);
+    bottom: -200px;
+    left: -100px;
+    pointer-events: none;
+    z-index: 0;
+    animation: ar-float-2 28s ease-in-out infinite;
+}
+
+@keyframes ar-float-2 {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    33% { transform: translate(30px, -40px) scale(0.95); }
+    66% { transform: translate(-20px, 20px) scale(1.05); }
+}
+
+.fi-simple-main {
+    position: relative;
+    z-index: 1;
+    background: rgb(55 65 81 / 0.4) !important;
+    border: 1px solid rgb(255 255 255 / 0.08) !important;
+    border-radius: 1.25rem !important;
+    box-shadow:
+        0 20px 30px -15px rgb(0 0 0 / 0.4),
+        inset 0 1px 0 rgb(255 255 255 / 0.05) !important;
+    backdrop-filter: blur(16px);
+    animation: ar-card-enter 0.6s ease-out both;
+    transition: box-shadow 0.4s ease, border-color 0.4s ease;
+}
+
+.fi-simple-main:hover {
+    border-color: rgb(255 255 255 / 0.12) !important;
+    box-shadow:
+        0 20px 30px -15px rgb(0 0 0 / 0.4),
+        0 0 40px -10px rgb(16 185 129 / 0.15),
+        inset 0 1px 0 rgb(255 255 255 / 0.05) !important;
+}
+
+@keyframes ar-card-enter {
+    from {
+        opacity: 0;
+        transform: translateY(24px) scale(0.98);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.fi-simple-page {
+    color: var(--ar-white);
+}
+
+.fi-logo {
+    color: var(--ar-white) !important;
+}
+
+.ar-login-brand {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.ar-login-logo-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    height: 56px;
+    border-radius: 16px;
+    background: linear-gradient(135deg, var(--ar-emerald-500), var(--ar-emerald-700));
+    box-shadow: 0 8px 32px rgb(16 185 129 / 0.3);
+    color: white;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.ar-login-logo-icon svg {
+    width: 30px;
+    height: 30px;
+}
+
+.ar-login-logo-img {
+    max-width: 130px;
+    max-height: 130px;
+    height: auto;
+    width: auto;
+    object-fit: contain;
+    border-radius: 10px;
+}
+
+.ar-login-brand:hover .ar-login-logo-icon {
+    transform: scale(1.05);
+    box-shadow: 0 8px 40px rgb(16 185 129 / 0.4);
+}
+
+.ar-login-brand-label {
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--ar-white);
+    letter-spacing: -0.01em;
+}
+
+.fi-simple-header-subheading {
+    color: var(--ar-zinc-400) !important;
+    font-size: 0.875rem !important;
+    letter-spacing: 0.3px;
+    font-weight: 400;
+}
+
+.fi-simple-page .fi-fo-field {
+    margin-bottom: 1.25rem;
+}
+
+.fi-simple-page .fi-fo-field-label-content {
+    color: var(--ar-zinc-300) !important;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.fi-simple-page .fi-input-wrp {
+    border-radius: 0.75rem !important;
+    border: 1px solid var(--ar-zinc-700) !important;
+    background: var(--ar-bg-900) !important;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease;
+    overflow: hidden;
+}
+
+.fi-simple-page .fi-input-wrp:focus-within {
+    border-color: var(--ar-emerald-500) !important;
+    box-shadow: 0 0 0 3px rgb(16 185 129 / 0.15) !important;
+}
+
+.fi-simple-page .fi-input-wrp .fi-input {
+    background: transparent !important;
+    color: var(--ar-white) !important;
+    padding-block: 0.65rem !important;
+    font-size: 0.9rem;
+}
+
+.fi-simple-page .fi-input-wrp .fi-input::placeholder {
+    color: var(--ar-zinc-600) !important;
+}
+
+.fi-simple-page .fi-input-wrp-prefix {
+    padding-left: 0.75rem !important;
+    color: var(--ar-zinc-600) !important;
+    transition: color 0.25s ease;
+}
+
+.fi-simple-page .fi-input-wrp:focus-within .fi-input-wrp-prefix {
+    color: var(--ar-emerald-500) !important;
+}
+
+.fi-simple-page .fi-input-wrp-suffix {
+    padding-right: 0.5rem !important;
+}
+
+.fi-simple-page .fi-input-wrp-suffix button {
+    color: var(--ar-zinc-600) !important;
+    transition: color 0.2s ease;
+}
+
+.fi-simple-page .fi-input-wrp-suffix button:hover {
+    color: var(--ar-zinc-300) !important;
+}
+
+.fi-simple-page .fi-checkbox-input {
+    accent-color: var(--ar-emerald-500);
+}
+
+.fi-simple-page .fi-fo-field-label-col a,
+.fi-simple-page .fi-fo-field-label-col .fi-link {
+    color: var(--ar-emerald-500) !important;
+    font-size: 0.8rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.fi-simple-page .fi-fo-field-label-col a:hover,
+.fi-simple-page .fi-fo-field-label-col .fi-link:hover {
+    color: rgb(52 211 153) !important;
+}
+
+.fi-simple-page .fi-btn,
+.fi-simple-page button[type='submit'] {
+    border: 0 !important;
+    border-radius: 0.85rem !important;
+    background: linear-gradient(90deg, var(--ar-emerald-500), var(--ar-emerald-600), var(--ar-emerald-700)) !important;
+    color: var(--ar-white) !important;
+    font-weight: 600 !important;
+    padding-block: 0.65rem !important;
+    font-size: 0.95rem;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.fi-simple-page .fi-btn::after,
+.fi-simple-page button[type='submit']::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        45deg,
+        transparent 30%,
+        rgb(255 255 255 / 0.08) 50%,
+        transparent 70%
+    );
+    transform: translateX(-100%) rotate(25deg);
+    transition: transform 0.6s ease;
+}
+
+.fi-simple-page .fi-btn:hover::after,
+.fi-simple-page button[type='submit']:hover::after {
+    transform: translateX(100%) rotate(25deg);
+}
+
+.fi-simple-page .fi-btn:hover,
+.fi-simple-page button[type='submit']:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 16px 30px -12px rgb(16 185 129 / 0.5);
+    filter: brightness(1.05);
+}
+
+.fi-simple-page .fi-btn:active,
+.fi-simple-page button[type='submit']:active {
+    transform: translateY(0);
+    box-shadow: 0 8px 20px -12px rgb(16 185 129 / 0.4);
+}
+
+.fi-simple-page .fi-fo-field-wrp-error-message {
+    color: rgb(248 113 113) !important;
+    font-size: 0.8rem;
+    margin-top: 0.3rem;
+}
+
+.ar-front-login-link {
+    color: var(--ar-emerald-500);
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.ar-front-login-link:hover {
+    color: rgb(52 211 153);
+}
+
+@media (max-width: 640px) {
+    .fi-simple-main {
+        margin-block: 1.5rem !important;
+        padding: 1.5rem !important;
+        border-radius: 1rem !important;
+    }
+
+    .fi-simple-layout::after {
+        width: 350px;
+        height: 350px;
+        bottom: -150px;
+        left: -80px;
+    }
+
+    .ar-login-logo-icon {
+        width: 48px;
+        height: 48px;
+    }
+
+    .ar-login-logo-icon svg {
+        width: 24px;
+        height: 24px;
+    }
+
+    .ar-login-brand-label {
+        font-size: 1.15rem;
+    }
+}

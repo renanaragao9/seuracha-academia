@@ -1,0 +1,295 @@
+<?php
+
+namespace Database\Seeders;
+
+use App\Models\Role;
+use App\Models\Student;
+use App\Models\User;
+use Illuminate\Database\Seeder;
+
+class StudentSeeder extends Seeder
+{
+    public function run(): void
+    {
+        $professorRole = Role::updateOrCreate(
+            ['name' => 'Professor'],
+            ['description' => 'Instrutor responsável por alunos']
+        );
+
+        $professores = [
+            [
+                'name' => 'Prof. Anderson Lima',
+                'email' => 'anderson.lima@academia.com',
+                'password' => bcrypt('12345678'),
+                'phone' => '(11) 99001-1111',
+                'status' => 'active',
+                'role_id' => $professorRole->id,
+                'email_verified_at' => now(),
+            ],
+            [
+                'name' => 'Prof. Beatriz Santos',
+                'email' => 'beatriz.santos@academia.com',
+                'password' => bcrypt('12345678'),
+                'phone' => '(11) 99002-2222',
+                'status' => 'active',
+                'role_id' => $professorRole->id,
+                'email_verified_at' => now(),
+            ],
+            [
+                'name' => 'Prof. Marcos Oliveira',
+                'email' => 'marcos.oliveira@academia.com',
+                'password' => bcrypt('12345678'),
+                'phone' => '(11) 99003-3333',
+                'status' => 'active',
+                'role_id' => $professorRole->id,
+                'email_verified_at' => now(),
+            ],
+        ];
+
+        $professorIds = [];
+        foreach ($professores as $data) {
+            $user = User::updateOrCreate(
+                ['email' => $data['email']],
+                $data
+            );
+            $professorIds[] = $user->id;
+        }
+
+        [$prof1, $prof2, $prof3] = $professorIds;
+
+        $students = [
+            [
+                'name' => 'Carlos Eduardo Silva',
+                'code' => 'ALU-0001',
+                'email' => 'carlos.silva@email.com',
+                'phone' => '(11) 99123-4567',
+                'gender' => 'male',
+                'color' => 'Pardo',
+                'status' => 'active',
+                'birth_date' => '1995-03-15',
+                'entry_date' => '2025-01-10',
+                'weight' => 82.50,
+                'height' => 178.00,
+                'is_active' => true,
+                'responsible_id' => $prof1,
+            ],
+            [
+                'name' => 'Fernanda Oliveira Costa',
+                'code' => 'ALU-0002',
+                'email' => 'fernanda.costa@email.com',
+                'phone' => '(11) 98765-4321',
+                'gender' => 'female',
+                'color' => 'Branca',
+                'status' => 'active',
+                'birth_date' => '1998-07-22',
+                'entry_date' => '2025-02-01',
+                'weight' => 62.00,
+                'height' => 165.00,
+                'is_active' => true,
+                'responsible_id' => $prof1,
+            ],
+            [
+                'name' => 'Rafael Mendes Souza',
+                'code' => 'ALU-0003',
+                'email' => 'rafael.souza@email.com',
+                'phone' => '(21) 97654-3210',
+                'gender' => 'male',
+                'color' => 'Negro',
+                'status' => 'active',
+                'birth_date' => '1992-11-08',
+                'entry_date' => '2024-11-15',
+                'weight' => 95.00,
+                'height' => 182.00,
+                'is_active' => true,
+                'responsible_id' => $prof1,
+            ],
+            [
+                'name' => 'Juliana Pereira Lima',
+                'code' => 'ALU-0004',
+                'email' => 'juliana.lima@email.com',
+                'phone' => '(31) 96543-2109',
+                'gender' => 'female',
+                'color' => 'Parda',
+                'status' => 'active',
+                'birth_date' => '2000-05-30',
+                'entry_date' => '2025-03-05',
+                'weight' => 58.50,
+                'height' => 162.00,
+                'is_active' => true,
+                'responsible_id' => $prof1,
+            ],
+            [
+                'name' => 'Bruno Alves Ferreira',
+                'code' => 'ALU-0005',
+                'email' => 'bruno.ferreira@email.com',
+                'phone' => '(41) 95432-1098',
+                'gender' => 'male',
+                'color' => 'Branco',
+                'status' => 'inactive',
+                'birth_date' => '1990-09-14',
+                'entry_date' => '2024-06-20',
+                'weight' => 78.00,
+                'height' => 175.00,
+                'is_active' => false,
+                'responsible_id' => $prof2,
+            ],
+            [
+                'name' => 'Mariana Santos Rocha',
+                'code' => 'ALU-0006',
+                'email' => 'mariana.rocha@email.com',
+                'phone' => '(51) 94321-0987',
+                'gender' => 'female',
+                'color' => 'Branca',
+                'status' => 'active',
+                'birth_date' => '1997-01-19',
+                'entry_date' => '2025-01-20',
+                'weight' => 55.00,
+                'height' => 160.00,
+                'is_active' => true,
+                'responsible_id' => $prof2,
+            ],
+            [
+                'name' => 'Thiago Nascimento Gomes',
+                'code' => 'ALU-0007',
+                'email' => 'thiago.gomes@email.com',
+                'phone' => '(61) 93210-9876',
+                'gender' => 'male',
+                'color' => 'Pardo',
+                'status' => 'suspended',
+                'birth_date' => '1988-12-03',
+                'entry_date' => '2024-08-10',
+                'weight' => 88.00,
+                'height' => 180.00,
+                'is_active' => false,
+                'responsible_id' => $prof2,
+            ],
+            [
+                'name' => 'Camila Rodrigues Martins',
+                'code' => 'ALU-0008',
+                'email' => 'camila.martins@email.com',
+                'phone' => '(71) 92109-8765',
+                'gender' => 'female',
+                'color' => 'Negra',
+                'status' => 'active',
+                'birth_date' => '2001-04-25',
+                'entry_date' => '2025-04-01',
+                'weight' => 65.00,
+                'height' => 168.00,
+                'is_active' => true,
+                'responsible_id' => $prof2,
+            ],
+            [
+                'name' => 'Lucas Carvalho Dias',
+                'code' => 'ALU-0009',
+                'email' => 'lucas.dias@email.com',
+                'phone' => '(81) 91098-7654',
+                'gender' => 'male',
+                'color' => 'Branco',
+                'status' => 'pending',
+                'birth_date' => '2003-08-17',
+                'entry_date' => '2025-05-15',
+                'weight' => 70.00,
+                'height' => 176.00,
+                'is_active' => true,
+                'responsible_id' => $prof2,
+            ],
+            [
+                'name' => 'Patrícia Vieira Barbosa',
+                'code' => 'ALU-0010',
+                'email' => 'patricia.barbosa@email.com',
+                'phone' => '(85) 90987-6543',
+                'gender' => 'female',
+                'color' => 'Parda',
+                'status' => 'active',
+                'birth_date' => '1994-06-11',
+                'entry_date' => '2024-12-01',
+                'weight' => 68.00,
+                'height' => 170.00,
+                'is_active' => true,
+                'responsible_id' => $prof3,
+            ],
+            [
+                'name' => 'Diego Monteiro Teixeira',
+                'code' => 'ALU-0011',
+                'email' => 'diego.teixeira@email.com',
+                'phone' => '(91) 99876-5432',
+                'gender' => 'male',
+                'color' => 'Negro',
+                'status' => 'active',
+                'birth_date' => '1993-02-28',
+                'entry_date' => '2025-02-15',
+                'weight' => 90.00,
+                'height' => 183.00,
+                'is_active' => true,
+                'responsible_id' => $prof3,
+            ],
+            [
+                'name' => 'Amanda Freitas Cunha',
+                'code' => 'ALU-0012',
+                'email' => 'amanda.cunha@email.com',
+                'phone' => '(92) 98765-4321',
+                'gender' => 'female',
+                'color' => 'Branca',
+                'status' => 'active',
+                'birth_date' => '1999-10-05',
+                'entry_date' => '2025-03-20',
+                'weight' => 57.00,
+                'height' => 163.00,
+                'is_active' => true,
+                'responsible_id' => $prof3,
+            ],
+            [
+                'name' => 'Felipe Araújo Nunes',
+                'code' => 'ALU-0013',
+                'email' => 'felipe.nunes@email.com',
+                'phone' => '(62) 97654-3210',
+                'gender' => 'male',
+                'color' => 'Pardo',
+                'status' => 'inactive',
+                'birth_date' => '1987-07-07',
+                'entry_date' => '2024-05-10',
+                'weight' => 102.00,
+                'height' => 185.00,
+                'is_active' => false,
+                'responsible_id' => $prof3,
+            ],
+            [
+                'name' => 'Isabela Moreira Pinto',
+                'code' => 'ALU-0014',
+                'email' => 'isabela.pinto@email.com',
+                'phone' => '(63) 96543-2109',
+                'gender' => 'female',
+                'color' => 'Branca',
+                'status' => 'active',
+                'birth_date' => '2002-03-12',
+                'entry_date' => '2025-01-05',
+                'weight' => 52.00,
+                'height' => 158.00,
+                'is_active' => true,
+                'responsible_id' => $prof3,
+            ],
+            [
+                'name' => 'Rodrigo Castro Lopes',
+                'code' => 'ALU-0015',
+                'email' => 'rodrigo.lopes@email.com',
+                'phone' => '(64) 95432-1098',
+                'gender' => 'male',
+                'color' => 'Branco',
+                'status' => 'active',
+                'birth_date' => '1996-09-23',
+                'entry_date' => '2024-10-01',
+                'weight' => 84.00,
+                'height' => 179.00,
+                'is_active' => true,
+                'responsible_id' => $prof3,
+            ],
+        ];
+
+        foreach ($students as $data) {
+            Student::updateOrCreate(
+                ['code' => $data['code']],
+                $data
+            );
+        }
+    }
+}
